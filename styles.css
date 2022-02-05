@@ -342,9 +342,9 @@ li .description {
 
 
 .timeline .date{
-	font-size: 14px;
+	font-size: 16px;
+	line-height: 22px;
 	color: #81899C;
-	font-weight: 300;
 }
 
 /* ---- Hover effects ---- */
