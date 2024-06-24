@@ -1,24 +1,146 @@
 <!DOCTYPE html>
-<br>
+<html lang="en">
 <head>
-	<title>Atakan Tekparmak Resume</title>
-	<link rel="stylesheet" type="text/css" href="/styles.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atakan Tekparmak</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content-container {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            gap: 2rem;
+        }
+        .sidebar, .main-content {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        .sidebar {
+            width: 250px;
+        }
+        .main-content {
+            width: 100%;
+            max-width: 800px;
+        }
+        .timeline-item {
+            border-left: 4px solid #059669;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .nav-button {
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.25rem;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #D1FAE5;
+        }
+        .nav-button.active {
+            background-color: #059669;
+            color: white;
+        }
+        header, footer {
+            background-color: #059669;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        footer {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            margin-top: auto;
+        }
+        .profile-image {
+            float: right;
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .burger-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .sidebar {
+                width: 100%;
+                display: none;
+            }
+            .main-content {
+                width: 100%;
+            }
+            .burger-menu {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 1000;
+                background-color: #059669;
+                color: white;
+                padding: 0.5rem;
+                border-radius: 0.25rem;
+            }
+        }
+    </style>
 </head>
-<br>
-	<div class="container">
-		<div class="hero">
-			<h1 class="name"><strong>Atakan</strong> Tekparmak</h1>
-			<br></br>
-			<div class="container-grid">
-				<div class="Picture">
-					<img src="profile_image.JPG" width="350" alt="Atakan Tekparmak Profile Picture">
-					
-				</div>
-				<div class="Bosluk">
-					<h2 class="section-title">Who am I?</h2>
-					<span>
-						I'm <strong>Atakan</strong>, a highly motivated <strong>AI Researcher & Engineer</strong> ,
+<body class="bg-green-50">
+    <header class="relative">
+        <h1 class="text-2xl font-bold">Atakan Tekparmak</h1>
+        <button class="burger-menu" onclick="toggleMenu()">
+            ☰
+        </button>
+    </header>
+
+    <div class="content-container">
+        <nav class="sidebar" id="sidebar">
+            <button class="nav-button active" onclick="showSection('bio')">Bio</button>
+            <button class="nav-button" onclick="showSection('education')">Education</button>
+            <button class="nav-button" onclick="showSection('career')">Professional Career</button>
+            <button class="nav-button" onclick="showSection('research')">Research</button>
+            <button class="nav-button" onclick="showSection('projects')">Projects</button>
+        </nav>
+
+        <main class="main-content">
+            <div id="content">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        © 2024 Atakan Tekparmak. All rights reserved.
+    </footer>
+
+    <script>
+        const sections = {
+            bio: `
+                <h2 class="text-2xl font-bold mb-4 text-green-600">Bio</h2>
+                <img src="profile_image.jpg" alt="Atakan Tekparmak" class="profile-image">
+                <p>
+					I'm <strong>Atakan</strong>, a highly motivated <strong>AI Researcher & Engineer</strong> ,
                         with a Bachelor's Degree in AI from the <strong>University of Groningen</strong>. 
                       	With 2+ years of experience in the industry, I have developed and maintained 
                         AI models for various tasks, ranging from Object Detection to Language Modeling. 
@@ -27,118 +149,156 @@
                         and Vue.js, which I leverage to build the frameworks and interfaces I use for research
                         and prototyping. 
                         <strong>Currently I'm working on multi-chained function calling with LLMs</strong>,
-                        which you can check in detail <a href="https://github.com/AtakanTekparmak/EasyFNC">here</a>.
+                        which you can check in detail <a href="https://github.com/AtakanTekparmak/EasyFNC" style="font-weight: bolder; color: #059669">here</a>.
                     	<br></br>
                         As a <strong>great communicator</strong>, I excel in situations where I have a lead role, guiding the 
                         trajectory of the project and/or research, giving suggestions and organising the 
                         processes. I am now seeking a role in which I will work with my true passion, AI, 
                         and in which I will use my both technical and non-technical skills to contribute to 
                         the field of AI, and if possible, open source software. 
-					</span>
-				</div>
-			  </div>
-			  <br>
-			<h3 class="section-title">
-				<a href="https://nl.linkedin.com/in/atakan-tekparmak-54b5a01ab">Linkedin</a>
-				&#9679;
-				<a href="https://github.com/AtakanTekparmak">Github</a>
-				&#9679;
-				<a href="https://x.com/AtakanTekparmak">Twitter</a>
-				<br>
-				Email: atakantekerparmak@gmail.com    
-				<br>
-				Located in Groningen, the Netherlands.
-			</h3>
-		</div>
-	</div>
+                        <br>
+            `,
+            education: `
+                <h2 class="text-2xl font-bold mb-4 text-green-600">Education</h2>
+                <div class="timeline-item">
+                    <h3 class="text-xl font-semibold">University of Groningen</h3>
+                    <p class="text-green-600">Bachelor's in Artificial Intelligence</p>
+                    <p class="text-sm text-gray-600">September 2019 - August 2023</p>
+                    <div class="mt-2">
+                        <p>During my 4 years at the University of Groningen, I gained a comprehensive understanding of Artificial Intelligence and its applications. Some key areas of study included:</p>
+                        <ul class="list-disc list-inside mt-2">
+                            <li>Machine Learning Fundamentals</li>
+                            <li>Deep Learning</li>
+                            <li>Natural Language Processing</li>
+                            <li>Agents and Agent-Based Modelling</li>
+                            <li>Reinforcement Learning</li>
+                            <li>AI Ethics and Philosophy</li>
+                        </ul>
+                        <p class="mt-2">Notable projects</p>
+                        <ul class="list-disc list-inside mt-2">
+                            <li>
+                                <a href="https://github.com/AtakanTekparmak/Group_12_Final_Project">
+                                    <strong style="color: #059669;">LSTM for predicting S&P 500 stock prices</strong>
+                                </a>
+                            </li>
+                            <li>Agent-based Simulation of the Groningen Housing Market (Private Repo)</li>
+                            <li>
+                                <strong style="color: #059669;" onclick="showSection('research')">Bachelor Thesis</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            career: `
+                <h2 class="text-2xl font-bold mb-4 text-green-600">Professional Career</h2>
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-semibold">Symbiotic</h3>
+                        <p class="text-green-600">Lead AI & Backend Developer</p>
+                        <p class="text-sm text-gray-600">April 2024 - Present</p>
+                        <p class="mt-2">
+                            Working on MentorBot, a web scraping RAG agent that helps 
+                            user with their questions about Mentor, Symbiotic's education
+                            managament platform. Using 
+                            <a href="https://github.com/AtakanTekparmak/easy_fnc/tree/main"> 
+                            <strong style="color: #059669;">easy_fnc</strong></a> for the 
+                            function calling backend.
 
-	<!-- Skills and intrest section -->
-	<div class="container">
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-semibold">Invisible Foods</h3>
+                        <p class="text-green-600">Lead AI & Backend Developer</p>
+                        <p class="text-sm text-gray-600">July 2023 - October 2023</p>
+                        <p class="mt-2">
+                            Worked on a Django backend and an image segmentation, detection
+                            and classification pipeline for reducing produce waste. 
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-semibold">STEKZ</h3>
+                        <p class="text-green-600">Fullstack & AI Developer</p>
+                        <p class="text-sm text-gray-600">March 2022 - April 2023</p>
+                        <p class="mt-2">
+                            Worked on a full-stack web application with Vue.js and Django, 
+                            and an image classification model. Changed ML stack from TF and 
+                            ResNet50v2 to Pytorch and YOLOv5. Managed to achieve significant 
+                            gains in accuracy and performance with significant losses in cost.
+                        </p>
+                    </div>
+                </div>
+            `,
+            research: `
+                <h2 class="text-2xl font-bold mb-4 text-green-600">Research</h2>
+        
+                <h3 class="text-xl font-semibold mt-4 mb-2 text-green-500">Completed Research</h3>
+                <div class="timeline-item">
+                    <h4 class="text-lg font-semibold">Bachelor Thesis</h4>
+                    <p class="font-medium">How does the inclusion of signaling in the Mod Game affect the behavior of Theory of Mind agents?</p>
+                    <p><strong>Supervisor:</strong> <a href="https://www.harmendeweerd.nl/" class="text-green-600 hover:underline">Harmen de Weerd</a></p>
+                    <p><strong>Code:</strong> <a href="https://github.com/AtakanTekparmak/ModGame_ToM_with_Signaling/tree/test_branch" class="text-green-600 hover:underline">GitHub Repository</a></p>
+                    <p><strong>Paper:</strong> <a href="https://github.com/AtakanTekparmak/Thesis_s4017765_Writing/blob/main/thesis_final.pdf" class="text-green-600 hover:underline">Final Thesis PDF</a></p>
+                </div>
 
-		<div class="sections">
-			<h2 class="section-title">Technical Skills</h2>
+                <h3 class="text-xl font-semibold mt-6 mb-2 text-green-500">Ongoing Research</h3>
+                <div class="timeline-item">
+                    <h4 class="text-lg font-semibold">Function Calling with LLM Agents</h4>
+                    <p>This research is currently ongoing. More details will be provided as the research progresses.</p>
+                </div>
+            `,
+            projects: `
+                <h2 class="text-2xl font-bold mb-4 text-green-600">Projects</h2>
+        
+                <h3 class="text-xl font-semibold mt-4 mb-2 text-green-500">Authored Projects</h3>
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-semibold"><a href="https://github.com/AtakanTekparmak/easy_fnc/tree/main" class="text-green-600 hover:underline">easy_fnc</a></h3>
+                        <p class="mt-2">Repository to facilitate function calling with LLMs in a highly modular way. Users can choose how much of the package they want to use, offering flexibility in implementation.</p>
+                    </div>
+            
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-semibold"><a href="https://github.com/AtakanTekparmak/chained-tools-datagen" class="text-green-600 hover:underline">chained-tools-datagen</a></h3>
+                        <p class="mt-2">An automated pipeline for generating synthetic chained function calling data. This project is built on top of <a href="https://github.com/interstellarninja/data-genie-agents" class="text-green-600 hover:underline">data-genie-agents</a>.</p>
+                    </div>
+                </div>
 
-			<div class="list-card">
-				<span class="exp">Used in Production Software</span>
-				<div>
-					<h3>Large Language Models</h3>
-					<span>&#9679; Local Inference & Fine-tuning</span>
-					<br>
-					<span>&#9679; Function Calling (actively researching)</span>
-					<br>
-					<span>&#9679; Retrieval Augmented Generation (RAG)</span>
-					<h3>Machine Learning Models</h3>
-					<span>&#9679; Object Detection Models (YOLOv5, YOLOv7)</span>
-					<h3>Python and its Frameworks/Libraries</h3>
-					<span>&#9679; Django, FastAPI, Pandas, Numpy</span>
-					<br>
-					<span>&#9679; Tensorflow & Keras, Pytorch</span>
-					<h3>Javascript and the Web</h3>
-					<span>&#9679;Vue3, Vite (Options & Composition API)</span>
-					<br>
-					<span>&#9679; HTML/CSS/JS</span>
-					<h3>Tooling & Utilities</h3>
-					<span>&#9679; Docker/Docker Compose</span>
-					<br>
-					<span>&#9679; Poetry & Pyenv, Yarn & Vite</span>
-					<h3>Databases</h3>
-					<span>&#9679; PostgreSQL, MySQL, Redis, MongoDB</span>
-					<br>
-				</div>
-			</div>
-			
-			<div class="list-card">
-				<span class="exp">Research</span>
-				<div>
-					<h3> Agent-Based Systems </h3>
-					<span>&#9679; <a href="https://github.com/AtakanTekparmak/ModGame_ToM_with_Signaling/tree/test_branch">Code</a></span>
-					<br>
-					<span>&#9679; <a href="https://github.com/AtakanTekparmak/Thesis_s4017765_Writing/blob/main/Thesis-s4017765%20(3).pdf">Paper</a></span>
-					<br>
-					<h3> Multi-Function Calling with LLMs</h3>
-					<span>&#9679; <a href="https://github.com/AtakanTekparmak/EasyFNC">Code (in progress)</a></span>
-				</div>
-			</div>	
-		</div>
-		
-		<div class="sections">
-				<h2 class="section-title">Non-technical Skills </h2>
+                <h3 class="text-xl font-semibold mt-6 mb-2 text-green-500">Open-Source Contributions</h3>
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-semibold"><a href="https://github.com/ml-explore/mlx-examples" class="text-green-600 hover:underline">mlx-examples</a></h3>
+                        <p class="mt-2">Contributed to the mlx-examples repository, which provides example implementations and use cases for the MLX machine learning framework.</p>
+                    </div>
+            
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-semibold"><a href="https://github.com/NousResearch/Hermes-Function-Calling" class="text-green-600 hover:underline">Hermes-Function-Calling</a></h3>
+                        <p class="mt-2">Contributed to the Hermes-Function-Calling project, which focuses on implementing and improving function calling capabilities for language models.</p>
+                    </div>
+                </div>
+            `
+        };
 
-				<div class="list-card">
-					<div>
-						<h3>Communicative and Social Skills</h3>
-						<span>With extensive knowledge in the field of AI and great social skills, I can act as a bridge between the different stakeholders of a research project and be in a lead role.</span>
-						<h3>Passion for AI Research</h3>
-						<span> Ever since 2016, AI and AI research has been my number one interest, which is why I studied it as my Bachelor's. As a graduate today, I spend many late nights focused on learning more about AI and conducting research on LLMs.</span>
-						<h3>Lead Developer</h3>
-						<span>I have lead and can lead a project in terms of discussing the progress, making roadmaps for future sprints, create tickets and assign tasks, actively develop in the project and keep track of the status.</span>
-						<h3>Problem Solving Ability</h3>
-						<span> I'm able to analyze new/unknown codebases and suggest solutions/improvements, ranging from code refactoring to security & performance improvements.</span>
-						<h3>Software Architecture</h3>
-						<span>Can translate functional requirements to technical requirements, able to steer the project given requirements by either a Client/Product Owner or a Project Manager.</span>
-					</div>
-				</div>
-		</div>
-	</div>
+        function showSection(sectionId) {
+            document.getElementById('content').innerHTML = sections[sectionId];
+            
+            // Update active state of nav buttons
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.nav-button:nth-child(${Object.keys(sections).indexOf(sectionId) + 1})`).classList.add('active');
 
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
-	<br></br>
+            // Hide sidebar on mobile after selection
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').style.display = 'none';
+            }
+        }
 
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+        }
 
+        // Show bio section by default
+        showSection('bio');
+    </script>
 </body>
 </html>
